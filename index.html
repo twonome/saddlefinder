@@ -10,18 +10,20 @@
     <div class="container">
         <h1>안장 추천 시스템</h1>
 
-        <!-- Question container -->
+        <!-- 질문 컨테이너 -->
         <div id="question-container">
-            <!-- Questions will be inserted here dynamically -->
+            <!-- 질문이 동적으로 추가될 예정 -->
         </div>
 
-        <!-- Result -->
-        <div id="result" class="result" style="display: none;">
-            <p id="saddle-recommendation"></p>
-            <button onclick="restart()">다시 시작하기</button>
-        </div>
+        <!-- 결과 페이지로 이동하는 버튼 (모든 질문 완료 후 표시됨) -->
+        <button id="next-button" style="display: none;" onclick="goToResults()">결과 보기</button>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        function goToResults() {
+            window.location.href = "results.html"; // 결과 페이지로 이동
+        }
+    </script>
 </body>
 </html>
