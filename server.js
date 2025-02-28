@@ -24,7 +24,7 @@ app.get('/get-image', async (req, res) => {
         const html = response.data;
         const $ = cheerio.load(html);
         const imageUrl = $('meta[property="og:image"]').attr('content');
-        
+
         if (imageUrl) {
             res.json({ imageUrl });
         } else {
