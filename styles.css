@@ -26,6 +26,14 @@ h1 {
     margin-bottom: 20px;
 }
 
+#notice {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #d9534f;
+    font-size: 1.5em; /* 크기를 키우기 위해 추가 */
+}
+
 #question-container {
     display: flex;
     flex-direction: column;
@@ -75,12 +83,4 @@ button:hover {
     transform: scale(1.1);
     border-color: #007BFF;
     cursor: pointer;
-}
-
-.notice {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #d9534f;
-    font-size: 1.2em; /* 크기를 키우기 위해 추가 */
 }
