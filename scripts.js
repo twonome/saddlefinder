@@ -52,7 +52,7 @@ async function fetchImage(url) {
         return data.imageUrl;
     } catch (error) {
         console.error('Error fetching image:', error);
-        return null;
+        return 'https://raw.githubusercontent.com/twonome/saddlefinder/main/images/default.png';
     }
 }
 
@@ -79,7 +79,7 @@ async function loadRecommendations() {
                     div.onclick = () => window.location.href = saddle.url;
 
                     const img = document.createElement('img');
-                    img.src = await fetchImage(saddle.url) || 'https://raw.githubusercontent.com/twonome/saddlefinder/main/images/default.png';
+                    img.src = await fetchImage(saddle.url);
                     img.alt = saddle.name;
 
                     const p = document.createElement('p');
