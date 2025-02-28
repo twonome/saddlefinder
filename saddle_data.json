@@ -5587,7 +5587,13 @@
       "카본레일 7x9",
       "카본레일 7x10"
     ],
-    "가격": "",
+    "가격": [
+      "상관없음",
+      "10만원이하",
+      "20만원대",
+      "30만원대",
+      "40만원이상"
+    ],
     "url": "",
     "img": "https://github.com/twonome/saddlefinder/blob/main/images/logo.png"
   }
