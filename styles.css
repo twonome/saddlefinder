@@ -66,8 +66,9 @@ button:hover {
 }
 
 .recommendation img {
-    width: 100px;
-    height: 100px;
+    width: 100px; /* 필요한 경우 너비를 조정 */
+    height: auto; /* 높이는 자동으로 비율에 맞게 조정 */
+    object-fit: contain; /* 이미지를 컨테이너에 맞게 조정 */
 }
 
 .recommendation:hover {
