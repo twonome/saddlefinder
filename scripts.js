@@ -44,7 +44,7 @@ function nextQuestion() {
 
 async function fetchImage(url) {
     try {
-        const response = await fetch(`/get-image?url=${encodeURIComponent(url)}`);
+        const response = await fetch(`http://localhost:3000/get-image?url=${encodeURIComponent(url)}`);
         const data = await response.json();
         return data.imageUrl || defaultImage;
     } catch (error) {
