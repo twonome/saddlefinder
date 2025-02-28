@@ -64,7 +64,7 @@ function loadRecommendations() {
                     div.onclick = () => window.location.href = saddle.url;
 
                     const img = document.createElement('img');
-                    img.src = saddle.img;
+                    img.src = saddle.img; // 깃허브 리포지토리의 이미지 URL 사용
                     img.alt = saddle.name;
 
                     const p = document.createElement('p');
