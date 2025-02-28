@@ -41,21 +41,6 @@ function nextQuestion() {
     }
 }
 
-// 서버에서 이미지를 가져오는 함수 추가
-async function fetchImage(url) {
-    try {
-        const response = await fetch(`http://localhost:3000/get-image?url=${encodeURIComponent(url)}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        return data.imageUrl;
-    } catch (error) {
-        console.error('Error fetching image:', error);
-        return 'https://raw.githubusercontent.com/twonome/saddlefinder/main/images/default.png';
-    }
-}
-
 async function loadRecommendations() {
     const savedAnswers = JSON.parse(localStorage.getItem('answers'));
     const container = document.querySelector('.recommendation-container');
@@ -79,7 +64,7 @@ async function loadRecommendations() {
                     div.onclick = () => window.location.href = saddle.url;
 
                     const img = document.createElement('img');
-                    img.src = await fetchImage(saddle.url);
+                    img.src = saddle.image;
                     img.alt = saddle.name;
 
                     const p = document.createElement('p');
