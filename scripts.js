@@ -41,6 +41,7 @@ function nextQuestion() {
     }
 }
 
+// 서버에서 이미지를 가져오는 함수 추가
 async function fetchImage(url) {
     try {
         const response = await fetch(`http://localhost:3000/get-image?url=${encodeURIComponent(url)}`);
