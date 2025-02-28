@@ -5,7 +5,7 @@ const questions = [
     { question: '회음부통증', options: ['없음', '약', '중약', '중', '중강', '강'] },
     { question: '라이딩 거리', options: ['5km미만', '10km미만', '20km미만', '30km미만', '50km미만', '100km미만', '100km이상'] },
     { question: '레일 규격', options: ['일반레일 7x7', '카본레일 7x9', '카본레일 7x10'] },
-    { question: '가격', options: ['상관없음', '10만원이하', '20만원이하', '30만원이하', '40만원이하', '40만원초과'] }
+    { question: '가격', options: ['상관없음', '10만원이하', '10만원대', '20만원대', '30만원대', '40만원이상'] }
 ];
 
 let currentQuestionIndex = 0;
