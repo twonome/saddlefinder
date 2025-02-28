@@ -32,7 +32,7 @@ app.get('/get-image', async (req, res) => {
             res.status(404).send('Image not found');
         }
     } catch (error) {
-        res.status(500).send('Error fetching the image');
+        res.status(500).send('Error fetching the image: ' + error.message);
     }
 });
 
