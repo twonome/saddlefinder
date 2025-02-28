@@ -45,13 +45,7 @@ function loadRecommendations() {
     const savedAnswers = JSON.parse(localStorage.getItem('answers'));
     const container = document.querySelector('.recommendation-container');
     
-    const notice = document.createElement('div');
-    notice.className = 'notice';
-    notice.innerHTML = `
-        <p>대여 후 같은 모델 구매 시, 대여료만큼 할인!</p>
-        <p>최대 판매가의 50%까지 할인!!!</p>
-    `;
-    container.appendChild(notice);
+ 
     
     fetch('saddle_data.json')
         .then(response => response.json())
