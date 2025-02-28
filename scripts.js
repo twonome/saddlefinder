@@ -41,13 +41,13 @@ function nextQuestion() {
     }
 }
 
-async function loadRecommendations() {
+function loadRecommendations() {
     const savedAnswers = JSON.parse(localStorage.getItem('answers'));
     const container = document.querySelector('.recommendation-container');
 
     fetch('saddle_data.json')
         .then(response => response.json())
-        .then(async data => {
+        .then(data => {
             const matchedSaddles = data.filter(saddle => {
                 return Object.keys(savedAnswers).every(question => {
                     const answer = savedAnswers[question];
@@ -58,13 +58,13 @@ async function loadRecommendations() {
             if (matchedSaddles.length === 0) {
                 container.innerHTML = "<p>조건에 맞는 안장이 없습니다.</p>";
             } else {
-                for (const saddle of matchedSaddles) {
+                matchedSaddles.forEach(saddle => {
                     const div = document.createElement('div');
                     div.className = 'recommendation';
                     div.onclick = () => window.location.href = saddle.url;
 
                     const img = document.createElement('img');
-                    img.src = saddle.image;
+                    img.src = saddle.img; // 깃허브 리포지토리의 이미지 URL 사용
                     img.alt = saddle.name;
 
                     const p = document.createElement('p');
@@ -73,7 +73,7 @@ async function loadRecommendations() {
                     div.appendChild(img);
                     div.appendChild(p);
                     container.appendChild(div);
-                }
+                });
             }
         })
         .catch(error => console.error('Error loading recommendations:', error));
