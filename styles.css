@@ -82,4 +82,5 @@ button:hover {
     margin-bottom: 20px;
     font-weight: bold;
     color: #d9534f;
+    font-size: 1.2em; /* 크기를 키우기 위해 추가 */
 }
