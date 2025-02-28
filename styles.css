@@ -76,3 +76,10 @@ button:hover {
     border-color: #007BFF;
     cursor: pointer;
 }
+
+.notice {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #d9534f;
+}
