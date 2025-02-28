@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // CORS 설정: 다른 도메인에서의 요청을 허용하기 위해 설정합니다.
 app.use((req, res, next) => {
@@ -13,7 +13,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// 클라이언트의 요청에 따라 URL에서 이미지를 파싱하여 반환하는 엔드포인트를 설정합니다.
 app.get('/get-image', async (req, res) => {
     const { url } = req.query;
     if (!url) {
@@ -25,7 +24,7 @@ app.get('/get-image', async (req, res) => {
         const html = response.data;
         const $ = cheerio.load(html);
         const imageUrl = $('meta[property="og:image"]').attr('content');
-
+        
         if (imageUrl) {
             res.json({ imageUrl });
         } else {
