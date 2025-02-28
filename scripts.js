@@ -10,7 +10,6 @@ const questions = [
 
 let currentQuestionIndex = 0;
 const answers = {};
-const defaultImage = "https://raw.githubusercontent.com/twonome/saddlefinder/main/images/logo.png"; // 기본 이미지 URL
 
 function showQuestion() {
     const questionContainer = document.getElementById('question-container');
@@ -46,10 +45,10 @@ async function fetchImage(url) {
     try {
         const response = await fetch(`http://localhost:3000/get-image?url=${encodeURIComponent(url)}`);
         const data = await response.json();
-        return data.imageUrl || defaultImage;
+        return data.imageUrl;
     } catch (error) {
         console.error('Error fetching image:', error);
-        return defaultImage;
+        return null;
     }
 }
 
@@ -76,7 +75,7 @@ async function loadRecommendations() {
                     div.onclick = () => window.location.href = saddle.url;
 
                     const img = document.createElement('img');
-                    img.src = await fetchImage(saddle.url); // 스마트스토어 URL에서 이미지 가져오기
+                    img.src = await fetchImage(saddle.url) || 'https://raw.githubusercontent.com/twonome/saddlefinder/main/images/default.png';
                     img.alt = saddle.name;
 
                     const p = document.createElement('p');
