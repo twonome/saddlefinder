@@ -10,6 +10,7 @@ const questions = [
 
 let currentQuestionIndex = 0;
 const answers = {};
+const defaultImage = "https://raw.githubusercontent.com/twonome/saddlefinder/main/images/logo.png"; // 기본 이미지 URL
 
 function showQuestion() {
     const questionContainer = document.getElementById('question-container');
@@ -41,13 +42,24 @@ function nextQuestion() {
     }
 }
 
-function loadRecommendations() {
+async function fetchImage(url) {
+    try {
+        const response = await fetch(`/get-image?url=${encodeURIComponent(url)}`);
+        const data = await response.json();
+        return data.imageUrl || defaultImage;
+    } catch (error) {
+        console.error('Error fetching image:', error);
+        return defaultImage;
+    }
+}
+
+async function loadRecommendations() {
     const savedAnswers = JSON.parse(localStorage.getItem('answers'));
     const container = document.querySelector('.recommendation-container');
 
     fetch('saddle_data.json')
         .then(response => response.json())
-        .then(data => {
+        .then(async data => {
             const matchedSaddles = data.filter(saddle => {
                 return Object.keys(savedAnswers).every(question => {
                     const answer = savedAnswers[question];
@@ -58,13 +70,13 @@ function loadRecommendations() {
             if (matchedSaddles.length === 0) {
                 container.innerHTML = "<p>조건에 맞는 안장이 없습니다.</p>";
             } else {
-                matchedSaddles.forEach(saddle => {
+                for (const saddle of matchedSaddles) {
                     const div = document.createElement('div');
                     div.className = 'recommendation';
                     div.onclick = () => window.location.href = saddle.url;
 
                     const img = document.createElement('img');
-                    img.src = saddle.img; // 깃허브 리포지토리의 이미지 URL 사용
+                    img.src = await fetchImage(saddle.url); // 스마트스토어 URL에서 이미지 가져오기
                     img.alt = saddle.name;
 
                     const p = document.createElement('p');
@@ -73,7 +85,7 @@ function loadRecommendations() {
                     div.appendChild(img);
                     div.appendChild(p);
                     container.appendChild(div);
-                });
+                }
             }
         })
         .catch(error => console.error('Error loading recommendations:', error));
