@@ -9,8 +9,10 @@ body {
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* 수직 정렬을 시작점으로 변경 */
     height: 100vh;
+    padding-top: 20px; /* 상단 여백 추가 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능하도록 설정 */
 }
 
 .container {
