@@ -9,15 +9,15 @@ body {
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 수직 정렬을 시작점으로 변경 */
+    align-items: center;
     height: 100vh;
-    padding-top: 20px; /* 상단 여백 추가 */
-    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능하도록 설정 */
+    padding-top: 20px;
+    overflow-y: auto;
 }
 
 .banner-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* 세로로 나열하도록 변경 */
     align-items: center;
     width: 100%;
     padding: 10px;
@@ -26,8 +26,12 @@ body {
     margin-bottom: 20px;
 }
 
+.banner-container a {
+    margin-bottom: 10px; /* 각 배너 사이에 간격 추가 */
+}
+
 .banner-container img {
-    width: 49%;
+    width: 100%; /* 배너 이미지를 컨테이너 너비에 맞게 조정 */
     height: auto;
     border-radius: 10px;
 }
@@ -50,7 +54,7 @@ h1 {
     margin-bottom: 20px;
     font-weight: bold;
     color: #d9534f;
-    font-size: 1.5em; /* 크기를 키우기 위해 추가 */
+    font-size: 1.5em;
 }
 
 #question-container {
